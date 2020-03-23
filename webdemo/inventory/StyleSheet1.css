@@ -1,0 +1,21 @@
+﻿body {
+    font-family:Calibri;
+    font-size:12pt;
+}
+
+h2 {
+    color:red;
+}
+
+.menu {
+    font-family: verdana;
+    font-weight : bold;
+    background-color: silver;
+}
+
+.banner {
+    font-family : Calibri;
+    font-size:30pt;
+    background-color:blue;
+    color:white;
+}

@@ -1,0 +1,39 @@
+﻿@model mvcdemo.Models.adonet.Category
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Category</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    <h2>Add Category</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>Category Code</div>
+        @Html.EditorFor(model => model.Code)
+        <span>&nbsp;</span>
+        @Html.ValidationMessageFor(model => model.Code, "")
+        <p></p>
+        <div>Category Description</div>
+        @Html.EditorFor(model => model.Description)
+        <span>&nbsp;</span>
+        @Html.ValidationMessageFor(model => model.Description, "")
+        <p></p>
+        <input type="submit" value="Add" />
+        <p></p>
+        @ViewBag.Message
+    }
+
+    <p></p>
+    @Html.ActionLink("List Categories", "List")
+
+</body>
+</html>

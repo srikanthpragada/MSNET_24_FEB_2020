@@ -1,0 +1,47 @@
+﻿@model IEnumerable<mvcdemo.Models.adonet.Category>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Categories</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Add Category", "Add")
+    </p>
+    <table width="50%">
+        <tr style="background-color:red;color:white;font-weight:bold">
+            <th>
+                Category Code
+            </th>
+            <th>
+                Category Description
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @category.Code
+                </td>
+                <td>
+                    @category.Description
+                </td>
+                <td>
+                    @Html.ActionLink("Delete","Delete", 
+                                    new { id = @category.Code })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome @Session["user"]</h1>
+    This is to demo ASP.NET MVC.
+    <p></p>
+    @Html.ActionLink("Logout","Logout")
+    
+</body>
+</html>

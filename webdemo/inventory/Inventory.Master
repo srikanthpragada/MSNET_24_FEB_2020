@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Inventory.master.cs" Inherits="webdemo.inventory.Inventory" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="StyleSheet1.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="banner">Inventory</div>
+        <div class="menu">
+            <a href="products.aspx">Products</a>
+            <a href="categories.aspx">Categories</a>
+            <a href="sales.aspx">Sales</a>
+        </div>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>

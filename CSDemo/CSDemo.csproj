@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CC0D5D6-E3A0-41F6-8510-CCEE222A1B50}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CSDemo</RootNamespace>
+    <AssemblyName>CSDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CSDemo.TestMyTime</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrayDemo.cs" />
+    <Compile Include="AverageOfNumbers.cs" />
+    <Compile Include="CalculateAge.cs" />
+    <Compile Include="DelegateDemo.cs" />
+    <Compile Include="DelegateUsage.cs" />
+    <Compile Include="DynamicDemo.cs" />
+    <Compile Include="Factorial.cs" />
+    <Compile Include="FunDemo.cs" />
+    <Compile Include="GenericsDemo.cs" />
+    <Compile Include="ImplicitlyTypedLocalVariable.cs" />
+    <Compile Include="Intersect.cs" />
+    <Compile Include="LeapYears.cs" />
+    <Compile Include="MonthDays.cs" />
+    <Compile Include="MyTime.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowFileContent.cs" />
+    <Compile Include="SortCustomers.cs" />
+    <Compile Include="SortNames.cs" />
+    <Compile Include="SortNamesFromFile.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="StringDemo.cs" />
+    <Compile Include="TestAccount.cs" />
+    <Compile Include="TestCricketer.cs" />
+    <Compile Include="TestDoctor.cs" />
+    <Compile Include="TestPerson.cs" />
+    <Compile Include="TestPoint.cs" />
+    <Compile Include="TestProduct.cs" />
+    <Compile Include="LargestName.cs" />
+    <Compile Include="WriteNames.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
