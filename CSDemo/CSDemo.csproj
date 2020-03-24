@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSDemo.TestMyTime</StartupObject>
+    <StartupObject>CSDemo.linq.QueryExpressionsDemo</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,6 +58,9 @@
     <Compile Include="ImplicitlyTypedLocalVariable.cs" />
     <Compile Include="Intersect.cs" />
     <Compile Include="LeapYears.cs" />
+    <Compile Include="linq\Book.cs" />
+    <Compile Include="linq\QueryExpressionsDemo.cs" />
+    <Compile Include="linq\QueryOperatorsDemo.cs" />
     <Compile Include="MonthDays.cs" />
     <Compile Include="MyTime.cs" />
     <Compile Include="Program.cs" />
