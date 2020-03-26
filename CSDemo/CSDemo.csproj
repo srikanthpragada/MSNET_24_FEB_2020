@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CsharpDemo.EF.UpdateCategory</StartupObject>
+    <StartupObject>CsharpDemo.EF.CacheDemo</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -67,6 +67,7 @@
     <Compile Include="EF\DeleteCategory.cs" />
     <Compile Include="EF\InventoryContext.cs" />
     <Compile Include="EF\ListCategories.cs" />
+    <Compile Include="EF\CacheDemo.cs" />
     <Compile Include="EF\UpdateCategory.cs" />
     <Compile Include="Factorial.cs" />
     <Compile Include="FunDemo.cs" />

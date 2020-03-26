@@ -19,9 +19,9 @@ namespace CsharpDemo.EF
                     Console.WriteLine("Category not found!");
                     return;
                 }
-                // Console.WriteLine(ctx.Entry(cat).State);
+                Console.WriteLine(ctx.Entry(cat).State);
                 ctx.Categories.Remove(cat);
-                // Console.WriteLine(ctx.Entry(cat).State);
+                Console.WriteLine(ctx.Entry(cat).State);
                 ctx.SaveChanges();  // Delete command 
             }
         }

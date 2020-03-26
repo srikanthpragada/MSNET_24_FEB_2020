@@ -19,10 +19,12 @@ namespace CsharpDemo.EF
                     Console.WriteLine("Category not found!");
                     return;
                 }
-                // Console.WriteLine(ctx.Entry(cat).State);
-                cat.Description = "Cat1"; // Modified 
-                // Console.WriteLine(ctx.Entry(cat).State);
+                Console.WriteLine("Before Change : "  + ctx.Entry(cat).State);
+                cat.Description = "Category 1"; // Modified 
+                Console.WriteLine("After Change  : " + ctx.Entry(cat).State);
                 ctx.SaveChanges();  // Update 
+                ctx.Dispose();
+                
             }
         }
     }
