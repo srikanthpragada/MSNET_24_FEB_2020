@@ -22,9 +22,9 @@ namespace CsharpDemo.EF
                 Console.WriteLine("Before Change : "  + ctx.Entry(cat).State);
                 cat.Description = "Category 1"; // Modified 
                 Console.WriteLine("After Change  : " + ctx.Entry(cat).State);
-                ctx.SaveChanges();  // Update 
+                ctx.SaveChanges();  // SQL Update 
                 ctx.Dispose();
-                
+                // cat is detached from ctx 
             }
         }
     }
