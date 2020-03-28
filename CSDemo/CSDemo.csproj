@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSDemo.EDM.ListProducts</StartupObject>
+    <StartupObject>CSDemo.EDM.ListCategories</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -61,6 +61,9 @@
     <Compile Include="ArrayDemo.cs" />
     <Compile Include="AverageOfNumbers.cs" />
     <Compile Include="CalculateAge.cs" />
+    <Compile Include="CF\AddCustomer.cs" />
+    <Compile Include="CF\Customer.cs" />
+    <Compile Include="CF\CRMContext.cs" />
     <Compile Include="DelegateDemo.cs" />
     <Compile Include="DelegateUsage.cs" />
     <Compile Include="DynamicDemo.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="linq\Book.cs" />
     <Compile Include="linq\QueryExpressionsDemo.cs" />
     <Compile Include="linq\QueryOperatorsDemo.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MonthDays.cs" />
     <Compile Include="MyTime.cs" />
     <Compile Include="Program.cs" />
