@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[Todos]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Category] VARCHAR(2) NOT NULL, 
+    [Todo] VARCHAR(100) NOT NULL, 
+    [AddedOn] DATETIME NOT NULL DEFAULT getdate()
+)
+
+insert into dbo.todos(category,todo) 
+   values( 'en','Watch Movie Parasite')
+
+insert into dbo.todos(category,todo) 
+   values( 'ed','Read book Biography of Steve Jobs')
+
+select * from todos

@@ -1,0 +1,15 @@
+﻿1. Create table  - TODOS  (MSDB Database)
+2. Insert some rows into TODOS
+3. Create MVC project with  MVC and WEB API - Todos
+4. Installing Entity Framework using NuGet Package Manager
+5. Create Todo class  - Models folder
+6. Create TodosContext class  - Modesl Folder
+7. Modified  Content/Site.css
+8. Modified  Views/Shared/_Layout.cshtml
+9. Deleted unncessary files
+10. Creating Controller  - TodosController with Entity Framework
+11. Modified  Views/Todos/Index.cshtml
+12. Modified TodosController.Index()  to select only 5 recent todos 
+
+
+

@@ -1,0 +1,27 @@
+﻿body {
+    padding:5px;
+    font-family : Calibri;
+    font-size: 12pt;
+}
+
+.banner {
+    font-family :Arial;
+    font-size:30pt;
+    background-color : maroon;
+    color:white;
+    font-weight : bold;
+    letter-spacing: 5pt;
+}
+
+.menu {
+    font-family: Verdana;
+    font-size: 12pt;
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+.colhead {
+    background-color: black;
+    color:white;
+}
+
