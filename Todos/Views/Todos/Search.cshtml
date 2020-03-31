@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+@using (Ajax.BeginForm("DoSearch",
+              new AjaxOptions { UpdateTargetId = "results" }))
+{
+ <span>Text : </span>
+ <input type="text" name="searchtext" size="20" />
+ <p></p>
+ <input type="submit" value="Search" />
+ <p></p>
+
+ <div id="results">
+
+ </div>
+}

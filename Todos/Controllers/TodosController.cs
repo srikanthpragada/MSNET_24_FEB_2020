@@ -37,8 +37,8 @@ namespace Todos.Controllers
             return View(todo);
         }
 
-        // GET: Todos/Create
-        public ActionResult Create()
+        // GET: Todos/Add
+        public ActionResult Add()
         {
             return View();
         }
@@ -48,10 +48,11 @@ namespace Todos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Category,Text,AddedOn")] Todo todo)
+        public ActionResult Add(Todo todo)
         {
             if (ModelState.IsValid)
             {
+                todo.AddedOn = DateTime.Now;
                 db.Todos.Add(todo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -67,6 +68,7 @@ namespace Todos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Todo todo = db.Todos.Find(id);
             if (todo == null)
             {
@@ -80,11 +82,13 @@ namespace Todos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Category,Text,AddedOn")] Todo todo)
+        public ActionResult Edit(int id, Todo todo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(todo).State = EntityState.Modified;
+                var dbTodo = db.Todos.Find(id);
+                dbTodo.Category = todo.Category;
+                dbTodo.Text = todo.Text;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -98,24 +102,31 @@ namespace Todos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Todo todo = db.Todos.Find(id);
             if (todo == null)
             {
                 return HttpNotFound();
             }
-            return View(todo);
-        }
 
-        // POST: Todos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Todo todo = db.Todos.Find(id);
             db.Todos.Remove(todo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        public ActionResult DoSearch(string searchtext)
+        {
+            var todos = db.Todos.Where(t => t.Text.Contains(searchtext))
+                                .OrderByDescending(t => t.Id);
+
+            return PartialView("SearchResult", todos);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

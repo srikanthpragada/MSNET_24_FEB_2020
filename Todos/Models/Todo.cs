@@ -17,6 +17,7 @@ namespace Todos.Models
 
 
         [Column("Todo")]
+        [Required]
         public string Text { get; set; }
 
 

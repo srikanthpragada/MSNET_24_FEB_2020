@@ -1,0 +1,33 @@
+﻿@model Todos.Models.Todo
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Todo</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <div>Category</div>
+    <select name="Category">
+        <option value="ed">Education</option>
+        <option value="en">Entertainment</option>
+        <option value="fi">Finance</option>
+        <option value="wo">Work</option>
+        <option value="hh">Home</option>
+    </select>
+    <p></p>
+    <div>Todo Text</div>
+    @Html.EditorFor(model => model.Text, 
+        new { htmlAttributes = new { style="width:500px"} })
+    <span>&nbsp;</span>
+    @Html.ValidationMessageFor(model => model.Text)
+    <p></p>
+    <input type="submit" value="Submit"/>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

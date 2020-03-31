@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\TodosContext.cs" />
+    <Compile Include="Models\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,11 +177,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Todos\Create.cshtml" />
+    <Content Include="Views\Todos\Add.cshtml" />
     <Content Include="Views\Todos\Delete.cshtml" />
     <Content Include="Views\Todos\Details.cshtml" />
     <Content Include="Views\Todos\Edit.cshtml" />
     <Content Include="Views\Todos\Index.cshtml" />
+    <Content Include="Views\Todos\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

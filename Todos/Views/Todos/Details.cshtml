@@ -5,39 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Todo</h2>
 
-<div>
-    <h4>Todo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+<table border="1" cellpadding="5px">
+    <tr>
+        <td>Id</td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td>@(Todos.Models.Utilities.GetCategoryName(Model.Category))</td>
+    </tr>
+    <tr>
+        <td>Text</td>
+        <td>@Model.Text</td>
+    </tr>
+    <tr>
+        <td>Addedon</td>
+        <td>@Model.AddedOn</td>
+    </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
+</table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddedOn)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
