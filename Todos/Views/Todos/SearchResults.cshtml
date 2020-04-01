@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Todos.Models.Todo>
+
+@if (Model.Count() == 0)
+{
+    <h3>Sorry! No results found!</h3>
+}
+else
+{
+<table style="width:100%">
+    <tr class="colhead">
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddedOn)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Todos.Models.Utilities.GetCategoryName(item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedOn)
+            </td>
+            <td style="text-align:center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                 new { onclick = "return confirm('Do you want to delete?')" })
+            </td>
+        </tr>
+    }
+</table>
+}

@@ -124,7 +124,7 @@ namespace Todos.Controllers
             var todos = db.Todos.Where(t => t.Text.Contains(searchtext))
                                 .OrderByDescending(t => t.Id);
 
-            return PartialView("SearchResult", todos);
+            return PartialView("SearchResults", todos.ToList<Todo>());
         }
 
 
