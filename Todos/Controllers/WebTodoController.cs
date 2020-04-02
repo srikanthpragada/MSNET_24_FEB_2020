@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Todos.Models;
@@ -17,9 +12,10 @@ namespace Todos.Controllers
         private TodosContext db = new TodosContext();
 
         // GET: api/WebTodo
+        [HttpGet]
         public IQueryable<Todo> GetTodos()
         {
-            return db.Todos;
+            return db.Todos.OrderByDescending( t => t.Id);
         }
 
         // GET: api/WebTodo/5
@@ -29,7 +25,7 @@ namespace Todos.Controllers
             Todo todo = db.Todos.Find(id);
             if (todo == null)
             {
-                return NotFound();
+                return NotFound();  // 404
             }
 
             return Ok(todo);
@@ -39,35 +35,25 @@ namespace Todos.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTodo(int id, Todo todo)
         {
-            if (!ModelState.IsValid)
+            var dbTodo = db.Todos.Find(id);
+            if (dbTodo == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();  // 404
             }
 
-            if (id != todo.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(todo).State = EntityState.Modified;
+            dbTodo.Category = todo.Category;
+            dbTodo.Text = todo.Text;
 
             try
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
-                if (!TodoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(HttpStatusCode.InternalServerError); // 500
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return StatusCode(HttpStatusCode.NoContent);  // 204
         }
 
         // POST: api/WebTodo
@@ -76,13 +62,13 @@ namespace Todos.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(ModelState);  // 400
             }
 
+            todo.AddedOn = DateTime.Now;
             db.Todos.Add(todo);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = todo.Id }, todo);
+            return Ok(todo); // 200
         }
 
         // DELETE: api/WebTodo/5

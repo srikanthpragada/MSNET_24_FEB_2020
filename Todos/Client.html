@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Todos Client</title>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            font-family: Verdana;
+            font-size: 12pt;
+        }
+
+        h2 {
+            color: red;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .button {
+            color: white;
+            background-color: gray;
+            font-size: 12pt;
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        var URL = "api/WebTodo/"
+
+        function GetInfo() {
+            var url = URL + $("#txtId").val();
+            $.ajax({
+                "url": url,
+                "type": "get",
+                "success": function (data) {
+                    showTodo(data);
+                },
+                "error": function () {
+                    ClearFields();
+                    $("#error").html("Sorry! Id not found");
+                }
+            });
+        }
+
+        function showTodo(data) {
+            $("#error").html("");
+            if (data) {
+                $("#txtCategory").val(data.Category);
+                $("#txtText").val(data.Text);
+                $("#txtAddedOn").val(data.AddedOn)
+            }
+        }
+
+        function DeleteTodo() {
+            var url = URL + $("#txtId").val();
+            $.ajax({
+                "url": url,
+                "type": "delete",
+                "success": function () {
+                    alert("Deleted Successfully!");
+                },
+                "error": displayError
+            });
+        }
+
+        function GetTodos() {
+            ClearFields();
+            $.getJSON(URL, {}, showAll);  // url,data,callback
+        }
+
+        function showAll(todos) {
+            // console.log(todos)
+            var out = "<table width='100%' border='1' cellpadding='5pt'>"
+                  + "<tr style = 'background-color:navy;color:white'><th>Id</th><th>Category </th><th>Todo </th><th>AddedOn</th></tr>";
+            $.each(todos,
+                function (index, todo) {
+                    out = out + "<tr><td>" + todo.Id + "</td><td>" + todo.Category +
+                        "</td><td>" + todo.Text + "</td><td>" +
+                        todo.AddedOn + "</td></tr>";
+                }
+            );
+
+            out = out + "</table>";
+            $("#output").html(out);
+        }
+
+        function AddTodo() {
+            var data = {
+                "Category": $("#txtCategory").val(),
+                "Text": $("#txtText").val(),
+            };
+
+            $.ajax({
+                "url": URL,
+                "data": data,
+                "type": "post",
+                "success": function () {
+                    ClearFields();
+                    alert("Added Todo Successfully!");
+                },
+                "error": displayError
+            });
+        }
+
+        function displayError(xhr, status, error) {
+            alert("Sorry! Could not complete task due to error!" + error);
+        }
+
+        function UpdateTodo() {
+            var url = URL + $("#txtId").val();
+            var data = {
+                "text": $("#txtText").val(),
+                "category": $("#txtCategory").val()
+            };
+
+            $.ajax({
+                "url": url,
+                "data": data,
+                "type": "put",
+                "success": function () {
+                    ClearFields();
+                    alert("Updated Successfully!");
+                },
+                "error": displayError
+            });
+        }
+
+        function ClearFields() {
+            $("#txtId").val("");
+            $("#txtCategory").val("");
+            $("#txtText").val("");
+            $("#txtAddedOn").val("");
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Todos Client</h2>
+    Id
+    <br />
+    <input type="text" id="txtId" required="required" />
+    <input type="button" value="Get Details" onclick="GetInfo()" class="button" />
+    <span id="error"></span>
+    <p />
+    Category:
+    <br />
+    <input type="text" id="txtCategory" />
+    <p />
+    Text :
+    <br />
+    <input type="text" id="txtText" style="width:500px" />
+    <p />
+    AddedOn :
+    <br />
+    <input type="text" id="txtAddedOn" readonly style="width:300px" />
+    <p />
+    <input type="button" value="Delete" onclick="DeleteTodo()" class="button" />
+    <input type="button" value="Update" onclick="UpdateTodo()" class="button" />
+    <input type="button" value="Add" onclick="AddTodo()" class="button" />
+    <input type="button" value="List" onclick="GetTodos()" class="button" />
+    <p></p>
+
+    <div id="output"></div>
+
+
+
+</body>
+</html>

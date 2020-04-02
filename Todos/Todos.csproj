@@ -151,6 +151,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client.html" />
     <Content Include="Content\steps.txt" />
     <Content Include="Content\tables.txt" />
     <Content Include="favicon.ico" />
